@@ -9,8 +9,6 @@ export default function SignUpPage() {
       </CardHeader>
       <CardContent className="space-y-3">
         <SignUpForm />
-
-        {/* {state?.error && <p className="text-red-500 text-sm mt-2">{state?.error}</p>} */}
       </CardContent>
     </Card>
   );

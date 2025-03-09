@@ -8,26 +8,19 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 import { useSignUp } from '@/app/hooks/useSignUp';
-
-const FormSchema = z.object({
-  email: z.string().min(1, 'Email is required').email('Invalid email'),
-  password: z
-    .string()
-    .min(1, 'Password is required')
-    .min(8, 'Password must have than 8 characters'),
-});
+import { userSchema } from '@/domain/schemas/user.schema';
 
 const SignUpForm = () => {
-  const { signUp, error } = useSignUp();
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const { signUp, error, isLoading } = useSignUp();
+  const form = useForm<z.infer<typeof userSchema>>({
+    resolver: zodResolver(userSchema),
     defaultValues: {
       email: '',
       password: '',
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof FormSchema>) => {
+  const onSubmit = async (values: z.infer<typeof userSchema>) => {
     signUp(values);
   };
 
@@ -62,8 +55,8 @@ const SignUpForm = () => {
             )}
           />
         </div>
-        <Button className="w-full mt-6" type="submit">
-          Sign up
+        <Button className="w-full mt-6" type="submit" disabled={isLoading}>
+          Sign up {isLoading && '...'}
         </Button>
         {error && <span className="text-red-500">{error.message}</span>}
       </form>
