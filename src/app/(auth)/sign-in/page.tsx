@@ -5,7 +5,7 @@ export default function SignUpPage() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Sign Up</CardTitle>
+        <CardTitle>Sign In</CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
         <SignUpForm />
