@@ -6,11 +6,11 @@ import * as z from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
-import { useSignUp } from '@/app/hooks/useSignUp';
 import { userSchema } from '@/domain/schemas/user.schema';
+import { useSignIn } from '@/app/hooks/useSignIn';
 
 const SignInForm = () => {
-  const { signUp, error, isLoading } = useSignUp();
+  const { signIn, error, isLoading } = useSignIn();
   const form = useForm<z.infer<typeof userSchema>>({
     resolver: zodResolver(userSchema),
     defaultValues: {
@@ -20,7 +20,7 @@ const SignInForm = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof userSchema>) => {
-    signUp(values);
+    await signIn(values);
   };
 
   return (

@@ -1,3 +1,4 @@
+import SignInForm from '@/components/auth/SignInForm';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function SignInPage() {
@@ -6,7 +7,9 @@ export default function SignInPage() {
       <CardHeader>
         <CardTitle>Sign In</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-3">{/* <SignUpForm /> */}</CardContent>
+      <CardContent className="space-y-3">
+        <SignInForm />
+      </CardContent>
     </Card>
   );
 }
