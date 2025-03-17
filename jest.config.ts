@@ -14,6 +14,7 @@ const config: Config = {
   moduleNameMapper: {
     '@/(.*)': '<rootDir>/src/$1', // Map `@` to `src`
   },
+  testPathIgnorePatterns: ['/node_modules/', '/__tests__/_utils.ts'],
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 };
