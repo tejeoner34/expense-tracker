@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react';
+import { renderHook, act, waitFor } from '@testing-library/react';
 import { useRouter } from 'next/navigation';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useSignUp } from '@/app/hooks/useSignUp';
@@ -55,7 +55,9 @@ describe('useSignUp Hook', () => {
     });
 
     expect(fetch).toHaveBeenCalledWith('/api/user', expect.any(Object));
-    expect(result.current.error).toBeInstanceOf(Error);
+    await waitFor(() => {
+      expect(result.current.error).toBeInstanceOf(Error);
+    });
     expect(result.current.error?.message).toBe('User already exists');
     expect(mockPush).not.toHaveBeenCalled();
   });

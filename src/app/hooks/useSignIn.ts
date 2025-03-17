@@ -2,6 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 import { routes } from '../routes/routes';
+import { apiErrors } from '@/lib/errors/api-responses';
 
 export function useSignIn() {
   const router = useRouter();
@@ -15,7 +16,7 @@ export function useSignIn() {
     },
     onSuccess: (data) => {
       if (!data?.ok) {
-        throw new Error(data?.error || 'Invalid login');
+        throw new Error(data?.error ? apiErrors[data?.error] : 'Invalid login');
       }
       router.push(routes.dashboard);
     },
