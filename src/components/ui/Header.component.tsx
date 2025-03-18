@@ -1,4 +1,4 @@
-import { AuthButton } from './AuthButton.component';
+import { AuthButton } from '../auth/AuthButton.component';
 
 export default function Header() {
   return (
