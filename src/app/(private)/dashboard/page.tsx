@@ -1,14 +1,17 @@
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { routes } from '@/app/routes/routes';
-import { getServerSession } from 'next-auth';
-import { redirect } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 const DashboardPage = async () => {
-  const session = await getServerSession(authOptions);
-  if (!session) {
-    redirect(routes.signIn);
-  }
-  return <div>DASHBOARD</div>;
+  return (
+    <div>
+      <div className="flex justify-end z-100 fixed bottom-0 p-9 w-full">
+        <Link href={routes.addExpense}>
+          <Button>New Expense</Button>
+        </Link>
+      </div>
+    </div>
+  );
 };
 
 export default DashboardPage;
