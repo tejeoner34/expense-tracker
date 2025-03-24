@@ -1,3 +1,4 @@
+import { currencies } from '@/data/currencies';
 import { User } from './user.model';
 
 export interface Expense {
@@ -7,7 +8,9 @@ export interface Expense {
   date: Date;
   description?: string;
   category: string;
-  currency: string;
+  currency: Currency;
   user: User;
   userId: number;
 }
+
+export type Currency = (typeof currencies)[number];

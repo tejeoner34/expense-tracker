@@ -41,27 +41,34 @@ export const authOptions: AuthOptions = {
         if (!passwordsMatch) {
           return null;
         }
-
+        console.log('existing user', existingUser);
         return {
           id: existingUser.id,
           email: existingUser.email,
+          categories: existingUser.categories,
         };
       },
     }),
   ],
   callbacks: {
     async jwt({ token, user }) {
+      console.log(token, user);
       if (user) {
         token.id = user.id;
+        token.categories = user.categories;
       }
       return token;
     },
     async session({ session, token }) {
+      if (token.categories) {
+        session.user.categories = token.categories;
+      }
       return {
         ...session,
         user: {
           ...session.user,
           id: token.id,
+          categories: token.categories,
         },
       };
     },

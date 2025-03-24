@@ -6,7 +6,6 @@ import { userSchema } from '@/domain/schemas/user.schema';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-
     const { email, password } = userSchema.parse(body);
 
     // Check if the user already exists
@@ -21,6 +20,7 @@ export async function POST(req: Request) {
       data: {
         email,
         password: hashedPassword,
+        categories: ['Default'],
       },
     });
 

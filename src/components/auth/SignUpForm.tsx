@@ -21,7 +21,6 @@ const SignUpForm = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof userSchema>) => {
-    console.log('SUBMITTING');
     signUp(values);
   };
 
