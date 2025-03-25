@@ -6,5 +6,4 @@ export interface User {
   password?: string;
   createdAt: Date;
   currency: Currency;
-  categories: string[];
 }

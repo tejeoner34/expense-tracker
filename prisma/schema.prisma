@@ -14,13 +14,12 @@ datasource db {
 }
 
 model User {
-  id         String    @id @default(uuid())
-  email      String    @unique
-  password   String
-  createdAt  DateTime  @default(now())
-  expenses   Expense[]
-  currency   String    @default("JPY")
-  categories String[]
+  id        String    @id @default(uuid())
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  expenses  Expense[]
+  currency  String    @default("JPY")
 }
 
 model Expense {

@@ -1,5 +1,16 @@
 import { currencies } from '@/data/currencies';
 import { User } from './user.model';
+import {
+  Utensils,
+  Car,
+  Home,
+  Lightbulb,
+  Music,
+  ShoppingBag,
+  HeartPulse,
+  Plane,
+  MoreHorizontal,
+} from 'lucide-react';
 
 export interface Expense {
   id: number;
@@ -7,10 +18,24 @@ export interface Expense {
   amount: number;
   date: Date;
   description?: string;
-  category: string;
+  category: ExpenseCategory;
   currency: Currency;
   user: User;
   userId: number;
 }
 
 export type Currency = (typeof currencies)[number];
+
+export const expenseCategories = [
+  { id: 'other', name: 'Other', icon: MoreHorizontal },
+  { id: 'food', name: 'Food', icon: Utensils },
+  { id: 'transport', name: 'Transport', icon: Car },
+  { id: 'housing', name: 'Housing', icon: Home },
+  { id: 'utilities', name: 'Utilities', icon: Lightbulb },
+  { id: 'entertainment', name: 'Entertainment', icon: Music },
+  { id: 'shopping', name: 'Shopping', icon: ShoppingBag },
+  { id: 'health', name: 'Health', icon: HeartPulse },
+  { id: 'travel', name: 'Travel', icon: Plane },
+] as const;
+
+export type ExpenseCategory = (typeof expenseCategories)[number]['id'];
