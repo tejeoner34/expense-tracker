@@ -41,7 +41,6 @@ export const authOptions: AuthOptions = {
         if (!passwordsMatch) {
           return null;
         }
-        console.log('existing user', existingUser);
         return {
           id: existingUser.id,
           email: existingUser.email,
@@ -52,7 +51,6 @@ export const authOptions: AuthOptions = {
   ],
   callbacks: {
     async jwt({ token, user }) {
-      console.log(token, user);
       if (user) {
         token.id = user.id;
         token.categories = user.categories;

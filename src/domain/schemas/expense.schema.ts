@@ -6,5 +6,8 @@ export const expenseSchema = z.object({
   category: z.string(),
   amount: z.number().positive(),
   currency: z.string(),
-  date: z.string().transform((val) => new Date(val)),
+  date: z
+    .string()
+    .transform((val) => new Date(val))
+    .optional(),
 });

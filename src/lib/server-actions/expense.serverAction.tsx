@@ -26,7 +26,6 @@ export async function addExpense(
       category: formData.get('category'),
       amount: Number(formData.get('amount')),
       currency: formData.get('currency'),
-      date: formData.get('date'),
     });
     await db.expense.create({
       data: expense,
