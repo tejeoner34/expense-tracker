@@ -13,7 +13,6 @@ export async function addExpense(
   const description = formData.get('description') as string;
   const category = formData.get('category') as string;
   const currency = formData.get('currency') as string;
-
   if (!amount || !description || !category || !currency) {
     return { success: false, error: 'データベースエラー' };
   }
@@ -23,9 +22,10 @@ export async function addExpense(
     const userId = session?.user?.id;
     const expense = expenseSchema.parse({
       userId,
-      category: formData.get('category'),
-      amount: Number(formData.get('amount')),
-      currency: formData.get('currency'),
+      category,
+      amount,
+      currency,
+      description,
     });
     await db.expense.create({
       data: expense,

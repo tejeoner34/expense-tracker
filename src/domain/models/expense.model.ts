@@ -1,5 +1,4 @@
 import { currencies } from '@/data/currencies';
-import { User } from './user.model';
 import {
   Utensils,
   Car,
@@ -13,14 +12,12 @@ import {
 } from 'lucide-react';
 
 export interface Expense {
-  id: number;
-  name: string;
+  id: string;
   amount: number;
   date: Date;
-  description?: string;
+  description: string;
   category: ExpenseCategory;
   currency: Currency;
-  user: User;
   userId: number;
 }
 
