@@ -1,4 +1,5 @@
 import { routes } from '@/app/routes/routes';
+import CategoriesChart from '@/components/expense/CategoriesChart.component';
 import ExpensesList from '@/components/expense/ExpensesList.component';
 import { Button } from '@/components/ui/button';
 import { serverSideGuard } from '@/lib/guards/serverSide';
@@ -11,8 +12,13 @@ const DashboardPage = async () => {
 
   return (
     <div>
-      <ExpensesList expensesList={expenses} />
-      {/* <ExpenseList />
+      <div>
+        <ExpensesList expensesList={expenses} />
+      </div>
+      <div className="h-96 w-full">
+        <CategoriesChart expensesList={expenses} />
+      </div>
+      {/*
       <MonthlyExpenseChart />
       <CategoriesChart />
       <DailyExpenseChart /> */}
