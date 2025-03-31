@@ -16,16 +16,16 @@ exports[`SignUpForm should match the snapshot 1`] = `
           class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 data-[error=true]:text-destructive-foreground"
           data-error="false"
           data-slot="form-label"
-          for=":r6:-form-item"
+          for=":r3g:-form-item"
         >
           Email
         </label>
         <input
-          aria-describedby=":r6:-form-item-description"
+          aria-describedby=":r3g:-form-item-description"
           aria-invalid="false"
           class="border-input file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive"
           data-slot="form-control"
-          id=":r6:-form-item"
+          id=":r3g:-form-item"
           name="email"
           placeholder="mail@example.com"
           value=""
@@ -39,21 +39,177 @@ exports[`SignUpForm should match the snapshot 1`] = `
           class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 data-[error=true]:text-destructive-foreground"
           data-error="false"
           data-slot="form-label"
-          for=":r7:-form-item"
+          for=":r3h:-form-item"
         >
           Password
         </label>
         <input
-          aria-describedby=":r7:-form-item-description"
+          aria-describedby=":r3h:-form-item-description"
           aria-invalid="false"
           class="border-input file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive"
           data-slot="form-control"
-          id=":r7:-form-item"
+          id=":r3h:-form-item"
           name="password"
           placeholder="Enter your password"
           type="password"
           value=""
         />
+      </div>
+      <div
+        class="grid gap-2"
+        data-slot="form-item"
+      >
+        <label
+          class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 data-[error=true]:text-destructive-foreground"
+          data-error="false"
+          data-slot="form-label"
+          for=":r3i:-form-item"
+        >
+          Default Currency
+        </label>
+        <button
+          aria-autocomplete="none"
+          aria-controls="radix-:r3j:"
+          aria-expanded="false"
+          class="border-input data-[placeholder]:text-muted-foreground [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:bg-input/30 dark:hover:bg-input/50 flex items-center justify-between gap-2 rounded-md border bg-transparent px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 w-full"
+          data-placeholder=""
+          data-size="default"
+          data-slot="select-trigger"
+          data-state="closed"
+          dir="ltr"
+          role="combobox"
+          type="button"
+        >
+          <span
+            data-slot="select-value"
+            style="pointer-events: none;"
+          >
+            Currency
+          </span>
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-chevron-down size-4 opacity-50"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m6 9 6 6 6-6"
+            />
+          </svg>
+        </button>
+        <select
+          aria-hidden="true"
+          style="position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; word-wrap: normal;"
+          tabindex="-1"
+        >
+          <option
+            value="USD"
+          >
+            USD
+          </option>
+          <option
+            value="EUR"
+          >
+            EUR
+          </option>
+          <option
+            value="GBP"
+          >
+            GBP
+          </option>
+          <option
+            value="JPY"
+          >
+            JPY
+          </option>
+          <option
+            value="AUD"
+          >
+            AUD
+          </option>
+          <option
+            value="CAD"
+          >
+            CAD
+          </option>
+          <option
+            value="CHF"
+          >
+            CHF
+          </option>
+          <option
+            value="CNY"
+          >
+            CNY
+          </option>
+          <option
+            value="SEK"
+          >
+            SEK
+          </option>
+          <option
+            value="NZD"
+          >
+            NZD
+          </option>
+          <option
+            value="MXN"
+          >
+            MXN
+          </option>
+          <option
+            value="SGD"
+          >
+            SGD
+          </option>
+          <option
+            value="HKD"
+          >
+            HKD
+          </option>
+          <option
+            value="NOK"
+          >
+            NOK
+          </option>
+          <option
+            value="KRW"
+          >
+            KRW
+          </option>
+          <option
+            value="TRY"
+          >
+            TRY
+          </option>
+          <option
+            value="INR"
+          >
+            INR
+          </option>
+          <option
+            value="RUB"
+          >
+            RUB
+          </option>
+          <option
+            value="BRL"
+          >
+            BRL
+          </option>
+          <option
+            value="ZAR"
+          >
+            ZAR
+          </option>
+        </select>
       </div>
     </div>
     <button
@@ -72,7 +228,7 @@ exports[`SignUpForm should match the snapshot 1`] = `
   <p
     class="text-center text-sm text-gray-600 mt-2"
   >
-    If you don't have an account, please 
+    If you already have an account, please 
     <a
       class="text-blue-500 hover:underline"
       href="/sign-in"

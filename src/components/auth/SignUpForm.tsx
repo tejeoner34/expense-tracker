@@ -8,19 +8,23 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 import { useSignUp } from '@/app/hooks/useSignUp';
-import { userSchema } from '@/domain/schemas/user.schema';
+import { userSchemaSignUp } from '@/domain/schemas/user.schema';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { currencies } from '@/data/currencies';
+import { Currency } from '@/domain/models/expense.model';
 
 const SignUpForm = () => {
   const { signUp, error, isLoading } = useSignUp();
-  const form = useForm<z.infer<typeof userSchema>>({
-    resolver: zodResolver(userSchema),
+  const form = useForm<z.infer<typeof userSchemaSignUp>>({
+    resolver: zodResolver(userSchemaSignUp),
     defaultValues: {
       email: '',
       password: '',
+      defaultCurrency: '' as Currency,
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof userSchema>) => {
+  const onSubmit = async (values: z.infer<typeof userSchemaSignUp>) => {
     signUp(values);
   };
 
@@ -54,6 +58,30 @@ const SignUpForm = () => {
               </FormItem>
             )}
           />
+          <FormField
+            control={form.control}
+            name="defaultCurrency"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Default Currency</FormLabel>
+                <FormControl>
+                  <Select value={field.value} onValueChange={field.onChange}>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Currency" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {currencies.map((currency) => (
+                        <SelectItem key={currency} value={currency}>
+                          {currency}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
         <Button className="w-full mt-6" type="submit" disabled={isLoading}>
           Sign up {isLoading && '...'}
@@ -64,7 +92,7 @@ const SignUpForm = () => {
         or
       </div>
       <p className="text-center text-sm text-gray-600 mt-2">
-        If you don&apos;t have an account, please&nbsp;
+        If you already have an account, please&nbsp;
         <Link className="text-blue-500 hover:underline" href="/sign-in">
           Sign in
         </Link>

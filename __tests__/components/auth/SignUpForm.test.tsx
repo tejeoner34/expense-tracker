@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { render, screen, fireEvent, act, within } from '@testing-library/react';
 import SignUpForm from '@/components/auth/SignUpForm';
 import { useSignUp } from '@/app/hooks/useSignUp';
 
@@ -13,6 +13,17 @@ jest.mock('@/app/hooks/useSignUp', () => ({
 }));
 
 describe('SignUpForm', () => {
+  beforeAll(() => {
+    global.MutationObserver = class {
+      observe() {}
+      disconnect() {}
+      takeRecords() {
+        return [];
+      }
+    };
+    Element.prototype.scrollIntoView = jest.fn();
+  });
+
   it('renders email and password fields', () => {
     render(<SignUpForm />);
 
@@ -51,12 +62,22 @@ describe('SignUpForm', () => {
     });
 
     await act(async () => {
+      fireEvent.click(screen.getByRole('combobox'));
+    });
+
+    const selectContent = screen.getByRole('listbox');
+    await act(async () => {
+      fireEvent.click(within(selectContent).getByText('USD'));
+    });
+
+    await act(async () => {
       fireEvent.submit(screen.getByRole('button', { name: /sign up/i }));
     });
 
     expect(mockSignUp).toHaveBeenCalledWith({
       email: 'test@example.com',
       password: 'password123',
+      defaultCurrency: 'USD',
     });
   });
 

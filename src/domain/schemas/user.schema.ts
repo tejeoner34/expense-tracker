@@ -1,9 +1,12 @@
 import { z } from 'zod';
 
-export const userSchema = z.object({
+const baseUserSchema = z.object({
   email: z.string().min(1, 'Email is required').email('Invalid email'),
-  password: z
-    .string()
-    .min(1, 'Password is required')
-    .min(1, 'Password must have than 8 characters'),
+  password: z.string().min(1, 'password is required'),
+});
+
+export const userSchemaSignIn = baseUserSchema;
+
+export const userSchemaSignUp = baseUserSchema.extend({
+  defaultCurrency: z.string().min(1, 'Default currency is required'),
 });
