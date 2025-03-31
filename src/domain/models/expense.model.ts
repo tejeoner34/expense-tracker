@@ -19,6 +19,7 @@ export interface Expense {
   category: ExpenseCategory;
   currency: Currency;
   userId: number;
+  defaultCurrencyAmount: number;
 }
 
 export type Currency = (typeof currencies)[number];

@@ -6,6 +6,7 @@ export const expenseSchema = z.object({
   category: z.string(),
   amount: z.number().positive(),
   description: z.string().min(1).max(100),
+  defaultCurrencyAmount: z.number().positive(),
   currency: z.string(),
   date: z
     .string()

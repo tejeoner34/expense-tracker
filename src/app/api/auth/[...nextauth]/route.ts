@@ -44,7 +44,7 @@ export const authOptions: AuthOptions = {
         return {
           id: existingUser.id,
           email: existingUser.email,
-          categories: existingUser.categories,
+          defaultCurrency: existingUser.defaultCurrency,
         };
       },
     }),
@@ -53,20 +53,20 @@ export const authOptions: AuthOptions = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.categories = user.categories;
+        token.defaultCurrency = user.defaultCurrency;
       }
       return token;
     },
     async session({ session, token }) {
       if (token.categories) {
-        session.user.categories = token.categories;
+        session.user.defaultCurrency = token.defaultCurrency;
       }
       return {
         ...session,
         user: {
           ...session.user,
           id: token.id,
-          categories: token.categories,
+          defaultCurrency: token.defaultCurrency,
         },
       };
     },
