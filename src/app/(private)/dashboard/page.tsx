@@ -1,6 +1,7 @@
 import { routes } from '@/app/routes/routes';
 import CategoriesChart from '@/components/expense/CategoriesChart.component';
 import ExpensesList from '@/components/expense/ExpensesList.component';
+import MonthlyExpenseChart from '@/components/expense/MonthlyExpenseChart.component';
 import { Button } from '@/components/ui/button';
 import { serverSideGuard } from '@/lib/guards/serverSide';
 import { fetchExpenses } from '@/lib/service/expenses';
@@ -18,8 +19,10 @@ const DashboardPage = async () => {
       <div className="h-96 w-full">
         <CategoriesChart expensesList={expenses} />
       </div>
+      <div className="h-96 w-full">
+        <MonthlyExpenseChart />
+      </div>
       {/*
-      <MonthlyExpenseChart />
       <CategoriesChart />
       <DailyExpenseChart /> */}
 
