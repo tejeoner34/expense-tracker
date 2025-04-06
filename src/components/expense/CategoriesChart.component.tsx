@@ -44,14 +44,16 @@ export default function CategoriesChart({ expensesList }: Props) {
   };
 
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <AreaChart data={categoryTotals} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="category" tick={<CustomTick />} />
-        <YAxis />
-        <Tooltip />
-        <Area type="monotone" dataKey="total" stroke="#8884d8" fill="#8884d8" />
-      </AreaChart>
-    </ResponsiveContainer>
+    <div data-testid="categories-chart">
+      <ResponsiveContainer width="100%" height={300}>
+        <AreaChart data={categoryTotals} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="category" tick={<CustomTick />} />
+          <YAxis />
+          <Tooltip />
+          <Area type="monotone" dataKey="total" stroke="#8884d8" fill="#8884d8" />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
   );
 }
