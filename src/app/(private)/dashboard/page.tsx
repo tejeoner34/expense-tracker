@@ -20,7 +20,7 @@ const DashboardPage = async () => {
         <CategoriesChart expensesList={expenses} />
       </div>
       <div className="h-96 w-full">
-        <MonthlyExpenseChart />
+        <MonthlyExpenseChart expensesList={expenses} />
       </div>
       {/*
       <CategoriesChart />
