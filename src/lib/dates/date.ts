@@ -15,6 +15,6 @@ const monthNames = [
 
 export const getMonthName = (date: Date) => {
   const d = new Date(date);
-  const month = d.getMonth() + 1;
+  const month = d.getMonth();
   return monthNames[month];
 };

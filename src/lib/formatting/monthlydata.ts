@@ -15,6 +15,5 @@ const groupExpensesByMonth = (expenses: Expense[]) => {
 };
 
 export const getMonthlyDataSorted = (expenses: Expense[]) => {
-  const groupedData = groupExpensesByMonth(expenses);
-  return groupedData.sort((a, b) => (a.month > b.month ? 1 : -1));
+  return groupExpensesByMonth(expenses);
 };
