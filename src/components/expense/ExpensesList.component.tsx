@@ -1,14 +1,19 @@
+'use client';
+
+import { useSession } from 'next-auth/react';
 import { Expense } from '@/domain/models/expense.model';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
 import { formatCurrency } from '@/lib/formatting/numbers';
-import { serverSideGuard } from '@/lib/guards/serverSide';
 
 type Props = {
   expensesList: Expense[];
 };
 
-export default async function ExpensesList({ expensesList }: Props) {
-  const session = await serverSideGuard();
+export default function ExpensesList({ expensesList }: Props) {
+  const { data: session } = useSession();
+
+  if (!session) return <p>Loading...</p>;
+
   return (
     <div>
       <Table>
