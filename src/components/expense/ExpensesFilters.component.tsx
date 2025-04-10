@@ -27,6 +27,12 @@ export default function ExpensesFilters({ years, onFilter, selectedYear }: Props
     onFilter(values.year);
   };
 
+  const handleSelectChange = (value: string) => {
+    const year = parseInt(value, 10);
+    form.setValue('year', year);
+    form.handleSubmit(onSubmit)();
+  };
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
@@ -38,7 +44,7 @@ export default function ExpensesFilters({ years, onFilter, selectedYear }: Props
               <FormItem>
                 <FormLabel>Default Currency</FormLabel>
                 <FormControl>
-                  <Select value={String(field.value)} onValueChange={field.onChange}>
+                  <Select value={String(field.value)} onValueChange={handleSelectChange}>
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Currency" />
                     </SelectTrigger>
