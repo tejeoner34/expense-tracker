@@ -42,7 +42,7 @@ export default function ExpensesFilters({ years, onFilter, selectedYear }: Props
             name="year"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Default Currency</FormLabel>
+                <FormLabel>Default Year</FormLabel>
                 <FormControl>
                   <Select value={String(field.value)} onValueChange={handleSelectChange}>
                     <SelectTrigger className="w-full">
