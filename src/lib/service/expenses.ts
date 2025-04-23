@@ -1,17 +1,26 @@
 import { User } from '@/domain/models/user.model';
 import { db } from '../db';
-import { Expense } from '@/domain/models/expense.model';
+import { Expense, ExpenseCategory } from '@/domain/models/expense.model';
 
 export async function fetchExpenses(userId: User['id']): Promise<Expense[]> {
-  return await db.expense.findMany({
+  const expenses = await db.expense.findMany({
     where: { userId },
   });
+
+  // Map database results to the Expense type
+  return expenses.map((expense) => ({
+    ...expense,
+    category: expense.category as ExpenseCategory,
+    currency: expense.currency as Expense['currency'],
+    userId: Number(expense.userId),
+  }));
 }
+
 export async function fetchExpensesByYear(userId: string, year: number): Promise<Expense[]> {
   const start = new Date(`${year}-01-01`);
   const end = new Date(`${year + 1}-01-01`);
 
-  return db.expense.findMany({
+  const expenses = await db.expense.findMany({
     where: {
       userId,
       date: {
@@ -23,6 +32,14 @@ export async function fetchExpensesByYear(userId: string, year: number): Promise
       date: 'desc',
     },
   });
+
+  // Map database results to the Expense type
+  return expenses.map((expense) => ({
+    ...expense,
+    category: expense.category as ExpenseCategory,
+    currency: expense.currency as Expense['currency'],
+    userId: Number(expense.userId),
+  }));
 }
 
 export async function fetchAvailableYears(userId: string): Promise<number[]> {

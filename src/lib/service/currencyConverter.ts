@@ -15,6 +15,7 @@ export const getCurrencyRate = async (defaultCurrency: Currency = 'EUR'): Promis
 export const getConvertedValue = async (
   currentCurrency: Currency,
   currentAmount: number,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   defaultCurrency: Currency = 'EUR'
 ) => {
   const rate = await getCurrencyRate();

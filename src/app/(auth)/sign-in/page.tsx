@@ -1,7 +1,7 @@
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { routes } from '@/app/routes/routes';
 import SignInForm from '@/components/auth/SignInForm';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { authOptions } from '@/lib/auth/authOptions';
 import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';

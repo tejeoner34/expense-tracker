@@ -19,7 +19,7 @@ export function ExpenseForm() {
   useEffect(() => {
     setSelectedCategory(defaultCategory);
     setSelectedCurrency(currencies[0]);
-  }, [state?.success]);
+  }, [state?.success, defaultCategory]);
 
   return (
     <form action={formAction} className="space-y-4 max-w-md mx-auto p-4 border rounded-lg">

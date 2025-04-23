@@ -3,9 +3,9 @@
 import { expenseSchema } from '@/domain/schemas/expense.schema';
 import { db } from '../db';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { getConvertedValue } from '../service/currencyConverter';
 import { Currency } from '@/domain/models/expense.model';
+import { authOptions } from '../auth/authOptions';
 
 export async function addExpense(
   state: { error: string; success?: undefined } | { success: boolean; error?: string } | null,

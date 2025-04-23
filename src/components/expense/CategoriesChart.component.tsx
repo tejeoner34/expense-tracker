@@ -27,7 +27,18 @@ export default function CategoriesChart({ expensesList }: Props) {
     };
   });
 
-  const CustomTick = ({ x, y, payload }: any) => {
+  type TickProps = {
+    x?: number;
+    y?: number;
+    payload?: {
+      value: string;
+    };
+  };
+
+  const CustomTick = (props: TickProps) => {
+    const { x = 0, y = 0, payload } = props;
+    if (!payload || !payload.value) return null;
+
     const { value } = payload;
     const category = categoryTotals.find((c) => c.category === value);
     if (!category) return null;

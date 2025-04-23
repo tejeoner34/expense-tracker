@@ -24,8 +24,10 @@ export async function POST(req: Request) {
       },
     });
 
-    const { password: newUserPassword, ...rest } = newUser;
-    return NextResponse.json({ user: rest });
+    // Remove password from the response
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password: userPassword, ...userWithoutPassword } = newUser;
+    return NextResponse.json({ user: userWithoutPassword });
   } catch (error) {
     console.log(error);
     return NextResponse.json({ message: 'Something went wrong', user: null }, { status: 500 });

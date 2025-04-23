@@ -20,7 +20,7 @@ const SignUpForm = () => {
     defaultValues: {
       email: '',
       password: '',
-      defaultCurrency: '' as Currency,
+      defaultCurrency: currencies[0] as Currency,
     },
   });
 
